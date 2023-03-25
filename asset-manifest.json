@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-hook_find_movie/static/css/main.7acaea2f.css",
+    "main.js": "/react-hook_find_movie/static/js/main.1fe16263.js",
+    "index.html": "/react-hook_find_movie/index.html",
+    "main.7acaea2f.css.map": "/react-hook_find_movie/static/css/main.7acaea2f.css.map",
+    "main.1fe16263.js.map": "/react-hook_find_movie/static/js/main.1fe16263.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.1fe16263.js"
+  ]
+}
