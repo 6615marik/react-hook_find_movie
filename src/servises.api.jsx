@@ -17,6 +17,7 @@ const getMovies = async () => {
 // Search by id -> MovieDetailsPage
 const getById = async id => {
   let respById = await axios.get(`${BASE_URL}movie/${id}?${API_KEY}`);
+
   return respById.data;
 };
 
@@ -42,6 +43,7 @@ const getByQuery = async query => {
   const resByQuery = await axios.get(
     `${BASE_URL}search/movie?${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`
   );
+
   return resByQuery.data.results;
 };
 

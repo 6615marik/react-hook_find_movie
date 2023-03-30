@@ -20,18 +20,21 @@ const Movies = () => {
       return;
     }
     getByQuery(submitValue)
-      .then(setMovies)
+      .then(movies => {
+        if (movies ? setMovies(movies) : alert('Enter a movie'));
+      })
       .catch(function (error) {
         console.log('Error: ' + error);
       });
-  }, [submitValue, value]);
-  console.log(movies);
+  }, [submitValue]);
+  // console.log(movies);
   return (
     <>
       <form onSubmit={onSubmitInput}>
         <input type="text" value={value} onChange={ChangeInput} />
         <button type="submit">Search</button>
       </form>
+      <div></div>
       {movies &&
         movies.map(movie => (
           <li key={movie.id}>

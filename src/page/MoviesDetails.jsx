@@ -12,61 +12,58 @@ const MoviesDetails = () => {
         console.log('Error: ' + error);
       });
   }, [id]);
-  console.log(movies);
-
-  if (!movies) {
-    return (
-      <Link to={location.state?.from ?? '/'}>
-        <button>Go back</button>
-      </Link>
-    );
-  }
+  // movies.length === 0 && alert('hjgjghgj');
   const { poster_path, original_title, overview, genres } = movies;
   return (
-    <div>
-      <Link to={location.state?.from ?? '/'}>
-        <button>Go back</button>
-      </Link>
+    <>
       <div>
-        <img
-          src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-          alt={original_title}
-          width="240"
-        />
-
+        <Link to={location.state?.from ?? '/'}>
+          <button>Go back</button>
+        </Link>
         <div>
-          <h2>{original_title}</h2>
-          <p>
-            <span>Overview:</span> {overview}
-          </p>
-          <p>
-            <span>Genres: </span>
+          <img
+            src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+            alt={original_title}
+            width="240"
+          />
 
-            {genres.map(({ id, name }) => (
-              <li key={id}>{name}</li>
-            ))}
-          </p>
+          <div>
+            <h2>{original_title}</h2>
+            <p>
+              <span>Overview:</span> {overview}
+            </p>
+            <p>
+              <span>Genres: </span>
+
+              {genres.map(({ id, name }) => (
+                <li key={id}>{name}</li>
+              ))}
+            </p>
+          </div>
+        </div>
+        <div>
+          <p>Additional inrormation</p>
+          <li key="cast">
+            {' '}
+            <Link to="cast" state={{ from: location.state.from }}>
+              Cast
+            </Link>
+          </li>
+          <li key="reviews">
+            {' '}
+            <Link to="reviews" state={{ from: location.state.from }}>
+              Reviews
+            </Link>
+          </li>
+        </div>
+        <div>
+          {' '}
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </div>
       </div>
-      <div>
-        <p>Additional inrormation</p>
-        <li key="cast">
-          {' '}
-          <Link to="cast" state={{ from: location.state.from }}>
-            Cast
-          </Link>
-        </li>
-        <li key="reviews">
-          {' '}
-          <Link to="reviews" state={{ from: location.state.from }}>
-            Reviews
-          </Link>
-        </li>
-      </div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Outlet />
-      </Suspense>
-    </div>
+    </>
   );
 };
 export default MoviesDetails;
