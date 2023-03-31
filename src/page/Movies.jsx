@@ -26,7 +26,7 @@ const Movies = () => {
       .catch(function (error) {
         console.log('Error: ' + error);
       });
-  }, [submitValue]);
+  }, [submitValue, value]);
   // console.log(movies);
   return (
     <>
