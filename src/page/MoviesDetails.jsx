@@ -1,8 +1,10 @@
 import { getById } from 'servises.api';
 import { useEffect, useState, Suspense } from 'react';
 import { Link, useParams, Outlet, useLocation } from 'react-router-dom';
+
 const MoviesDetails = () => {
   const [movies, setMovies] = useState('');
+
   const location = useLocation();
   const { id } = useParams();
   useEffect(() => {
@@ -12,7 +14,7 @@ const MoviesDetails = () => {
         console.log('Error: ' + error);
       });
   }, [id]);
-  // movies.length === 0 && alert('hjgjghgj');
+  if (movies.length === 0) return;
   const { poster_path, original_title, overview, genres } = movies;
   return (
     <>

@@ -2,31 +2,40 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getByQuery } from '../servises.api';
 import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 const Movies = () => {
   const [value, setValue] = useState('');
   const [submitValue, setSubmitValue] = useState('');
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchQuery = searchParams.get('query');
+
   const location = useLocation();
+  console.log(location);
   const ChangeInput = e => {
     setValue(e.currentTarget.value);
   };
   const onSubmitInput = e => {
     e.preventDefault();
     setSubmitValue(value);
-    setValue('');
+    setSearchParams(value !== '' ? { query: value } : {});
+
+    
+    // setValue('');
   };
   useEffect(() => {
     if (!submitValue) {
       return;
     }
-    getByQuery(submitValue)
+    getByQuery(searchQuery)
       .then(movies => {
         if (movies ? setMovies(movies) : alert('Enter a movie'));
       })
       .catch(function (error) {
         console.log('Error: ' + error);
       });
-  }, [submitValue, value]);
+  }, [searchQuery, submitValue, value]);
   // console.log(movies);
   return (
     <>
