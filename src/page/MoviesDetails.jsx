@@ -19,7 +19,7 @@ const MoviesDetails = () => {
   return (
     <>
       <div>
-        <Link to={location.state?.from ?? '/'}>
+        <Link to={location.state?.from ?? '/movies'}>
           <button>Go back</button>
         </Link>
         <div>

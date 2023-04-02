@@ -6,8 +6,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App basename="/react-hook_find_movie" />
+    <BrowserRouter basename="/react-hook_find_movie">
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );

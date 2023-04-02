@@ -4,43 +4,44 @@ import { getByQuery } from '../servises.api';
 import { useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 const Movies = () => {
-  const [value, setValue] = useState('');
+  // const [value, setValue] = useState('');
   const [submitValue, setSubmitValue] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const searchQuery = searchParams.get('query');
+  const searchQuery = searchParams.get('query') || '';
 
   const location = useLocation();
   console.log(location);
   const ChangeInput = e => {
-    setValue(e.currentTarget.value);
+    updateQueryString(e.currentTarget.value);
   };
+  const updateQueryString = name => {
+    const nextParams = name !== '' ? { query: name } : {};
+    setSearchParams(nextParams);
+  };
+
   const onSubmitInput = e => {
     e.preventDefault();
-    setSubmitValue(value);
-    setSearchParams(value !== '' ? { query: value } : {});
-
-    
-    // setValue('');
+    setSubmitValue(searchQuery);
   };
   useEffect(() => {
     if (!submitValue) {
       return;
     }
-    getByQuery(searchQuery)
+    getByQuery(submitValue)
       .then(movies => {
         if (movies ? setMovies(movies) : alert('Enter a movie'));
       })
       .catch(function (error) {
         console.log('Error: ' + error);
       });
-  }, [searchQuery, submitValue, value]);
-  // console.log(movies);
+  }, [submitValue]);
+
   return (
     <>
       <form onSubmit={onSubmitInput}>
-        <input type="text" value={value} onChange={ChangeInput} />
+        <input type="text" value={searchQuery} onChange={ChangeInput} />
         <button type="submit">Search</button>
       </form>
       <div></div>
