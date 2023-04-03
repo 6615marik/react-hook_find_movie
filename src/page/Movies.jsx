@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { getByQuery } from '../servises.api';
 import { useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Input, Button, Form } from 'components/styled.module';
 const Movies = () => {
-  // const [value, setValue] = useState('');
   const [submitValue, setSubmitValue] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -12,7 +13,7 @@ const Movies = () => {
   const searchQuery = searchParams.get('query') || '';
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const ChangeInput = e => {
     updateQueryString(e.currentTarget.value);
   };
@@ -25,13 +26,18 @@ const Movies = () => {
     e.preventDefault();
     setSubmitValue(searchQuery);
   };
+
   useEffect(() => {
     if (!submitValue) {
       return;
     }
     getByQuery(submitValue)
-      .then(movies => {
-        if (movies ? setMovies(movies) : alert('Enter a movie'));
+      .then(data => {
+        if (data.length === 0) {
+          Notify.info('Sorry no info with this name');
+          setMovies([]);
+        }
+        setMovies(data);
       })
       .catch(function (error) {
         console.log('Error: ' + error);
@@ -40,19 +46,20 @@ const Movies = () => {
 
   return (
     <>
-      <form onSubmit={onSubmitInput}>
-        <input type="text" value={searchQuery} onChange={ChangeInput} />
-        <button type="submit">Search</button>
-      </form>
-      <div></div>
-      {movies &&
-        movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-              {movie.title || movie.name}
-            </Link>
-          </li>
-        ))}
+      <Form onSubmit={onSubmitInput}>
+        <Input type="text" value={searchQuery} onChange={ChangeInput} />
+        <Button type="submit">Search</Button>
+      </Form>
+      <ul>
+        {movies &&
+          movies.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+                {movie.title || movie.name}
+              </Link>
+            </li>
+          ))}
+      </ul>
     </>
   );
 };

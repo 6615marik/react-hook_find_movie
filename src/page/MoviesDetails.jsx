@@ -1,6 +1,7 @@
 import { getById } from 'servises.api';
 import { useEffect, useState, Suspense } from 'react';
 import { Link, useParams, Outlet, useLocation } from 'react-router-dom';
+import pict from '../components/picture/pict.png';
 
 const MoviesDetails = () => {
   const [movies, setMovies] = useState('');
@@ -23,40 +24,46 @@ const MoviesDetails = () => {
           <button>Go back</button>
         </Link>
         <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-            alt={original_title}
-            width="240"
-          />
+          {poster_path === null ? (
+            <img src={pict} alt={original_title} width="240" />
+          ) : (
+            <img
+              src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+              alt={original_title}
+              width="240"
+            />
+          )}
 
           <div>
             <h2>{original_title}</h2>
             <p>
               <span>Overview:</span> {overview}
             </p>
-            <p>
-              <span>Genres: </span>
 
+            <span>Genres: </span>
+            <ul>
               {genres.map(({ id, name }) => (
                 <li key={id}>{name}</li>
               ))}
-            </p>
+            </ul>
           </div>
         </div>
         <div>
           <p>Additional inrormation</p>
-          <li key="cast">
-            {' '}
-            <Link to="cast" state={{ from: location.state.from }}>
-              Cast
-            </Link>
-          </li>
-          <li key="reviews">
-            {' '}
-            <Link to="reviews" state={{ from: location.state.from }}>
-              Reviews
-            </Link>
-          </li>
+          <ul>
+            <li key="cast">
+              {' '}
+              <Link to="cast" state={{ from: location.state.from }}>
+                Cast
+              </Link>
+            </li>
+            <li key="reviews">
+              {' '}
+              <Link to="reviews" state={{ from: location.state.from }}>
+                Reviews
+              </Link>
+            </li>
+          </ul>
         </div>
         <div>
           {' '}

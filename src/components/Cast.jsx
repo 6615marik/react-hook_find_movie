@@ -20,20 +20,22 @@ const Cast = () => {
   return (
     <>
       {casts.length === 0 && <p>We don`t have information about the cast</p>}
-      {casts.map(({ character, original_name, profile_path, id }) => (
-        <li key={id}>
-          {profile_path === null ? (
-            <img src={pic} alt={original_name} width="150" />
-          ) : (
-            <img
-              src={`https://image.tmdb.org/t/p/w400${profile_path}`}
-              alt={original_name}
-            />
-          )}
-          <p>{original_name}</p>
-          <p>Character: {character}</p>
-        </li>
-      ))}
+      <ul>
+        {casts.map(({ character, original_name, profile_path, id }) => (
+          <li key={id}>
+            {profile_path === null ? (
+              <img src={pic} alt={original_name} width="150" />
+            ) : (
+              <img
+                src={`https://image.tmdb.org/t/p/w400${profile_path}`}
+                alt={original_name}
+              />
+            )}
+            <p>{original_name}</p>
+            <p>Character: {character}</p>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };

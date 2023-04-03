@@ -18,13 +18,15 @@ const Reviews = () => {
 
   return (
     <>
-      {revie.length === 0 && <p>We don`t have information about the revie</p>}
-      {revie.map(({ author, content, id }) => (
-        <li key={id}>
-          <h2>{author}</h2>
-          <p>{content}</p>
-        </li>
-      ))}
+      <ul>
+        {revie.length === 0 && <p>We don`t have information about the revie</p>}
+        {revie.map(({ author, content, id }) => (
+          <li key={id}>
+            <h2>{author}</h2>
+            <p>{content}</p>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
