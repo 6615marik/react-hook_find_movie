@@ -1,37 +1,38 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { getByQuery } from '../servises.api';
 import { useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { Input, Button, Form } from 'components/styled.module';
+// import { Input, Button, Form } from 'components/styled.module';
+import FormMovies from 'components/Form';
+import MovieList from 'components/MovieList';
 const Movies = () => {
-  const [submitValue, setSubmitValue] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const searchQuery = searchParams.get('query') || '';
-
+  const nameQuery = searchParams.get('name') ?? '';
   const location = useLocation();
   // console.log(location);
-  const ChangeInput = e => {
-    updateQueryString(e.currentTarget.value);
-  };
-  const updateQueryString = name => {
-    const nextParams = name !== '' ? { query: name } : {};
-    setSearchParams(nextParams);
-  };
+  // const updateQueryString = e => {
+  //   const nextParams = e.target.value !== '' ? { name: e.target.value } : {};
+  //   setSearchParams(nextParams);
+  // };
 
-  const onSubmitInput = e => {
-    e.preventDefault();
-    setSubmitValue(searchQuery);
+  const searchQuery = queryWord => {
+    console.log(queryWord);
+    setSearchParams(queryWord !== '' ? { name: queryWord } : {});
   };
+  console.log(searchParams);
+  // const onSubmitInput = e => {
+  //   e.preventDefault();
+  //   setSearchParams(searchQuery);
+  // };
 
   useEffect(() => {
-    if (!submitValue) {
+    if (!nameQuery) {
       return;
     }
-    getByQuery(submitValue)
+    getByQuery(nameQuery)
       .then(data => {
         if (data.length === 0) {
           Notify.info('Sorry no info with this name');
@@ -42,24 +43,16 @@ const Movies = () => {
       .catch(function (error) {
         console.log('Error: ' + error);
       });
-  }, [submitValue]);
+  }, [nameQuery]);
 
   return (
     <>
-      <Form onSubmit={onSubmitInput}>
-        <Input type="text" value={searchQuery} onChange={ChangeInput} />
+      <FormMovies searchQuery={searchQuery} />
+      {/* <Form onSubmit={onSubmitInput}>
+        <Input type="text" value={searchQuery} onChange={updateQueryString} />
         <Button type="submit">Search</Button>
-      </Form>
-      <ul>
-        {movies &&
-          movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                {movie.title || movie.name}
-              </Link>
-            </li>
-          ))}
-      </ul>
+      </Form> */}
+      <MovieList movies={movies} location={location} />
     </>
   );
 };

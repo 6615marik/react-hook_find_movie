@@ -23,14 +23,16 @@ const Cast = () => {
       <ul>
         {casts.map(({ character, original_name, profile_path, id }) => (
           <li key={id}>
-            {profile_path === null ? (
-              <img src={pic} alt={original_name} width="150" />
-            ) : (
-              <img
-                src={`https://image.tmdb.org/t/p/w400${profile_path}`}
-                alt={original_name}
-              />
-            )}
+            <img
+              alt={original_name}
+              width="140"
+              src={
+                profile_path === null
+                  ? pic
+                  : `https://image.tmdb.org/t/p/w400${profile_path}`
+              }
+            />
+
             <p>{original_name}</p>
             <p>Character: {character}</p>
           </li>

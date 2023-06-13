@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 // import Notiflix from 'notiflix';
-import TreadingList from 'components/TreadingList';
+// import TreadingList from 'components/TreadingList';
 import { getMovies } from '../servises.api';
 import { useLocation } from 'react-router-dom';
+import MovieList from 'components/MovieList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -20,7 +21,7 @@ const Home = () => {
   return (
     <>
       <h2>Trending today</h2>
-      <TreadingList movies={movies} location={location} />
+      <MovieList movies={movies} location={location} />
     </>
   );
 };

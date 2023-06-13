@@ -4,7 +4,7 @@ import { Link, useParams, Outlet, useLocation } from 'react-router-dom';
 import pict from '../components/picture/pict.png';
 
 const MoviesDetails = () => {
-  const [movies, setMovies] = useState('');
+  const [movies, setMovies] = useState(null);
 
   const location = useLocation();
   const { id } = useParams();
@@ -15,7 +15,7 @@ const MoviesDetails = () => {
         console.log('Error: ' + error);
       });
   }, [id]);
-  if (movies.length === 0) return;
+  if (movies === null) return;
   const { poster_path, original_title, overview, genres } = movies;
   return (
     <>
@@ -24,7 +24,7 @@ const MoviesDetails = () => {
           <button>Go back</button>
         </Link>
         <div>
-          {poster_path === null ? (
+          {/* {poster_path === null ? (
             <img src={pict} alt={original_title} width="240" />
           ) : (
             <img
@@ -32,7 +32,16 @@ const MoviesDetails = () => {
               alt={original_title}
               width="240"
             />
-          )}
+          )} */}
+          <img
+            src={
+              poster_path === null
+                ? pict
+                : `https://image.tmdb.org/t/p/w300/${poster_path}`
+            }
+            alt={original_title}
+            width="240"
+          />
 
           <div>
             <h2>{original_title}</h2>
