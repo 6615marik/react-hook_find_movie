@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/react-hook_find_movie/static/css/main.c91dde9d.css",
-    "main.js": "/react-hook_find_movie/static/js/main.d5352647.js",
+    "main.js": "/react-hook_find_movie/static/js/main.cdfb5b69.js",
     "static/js/354.baa84979.chunk.js": "/react-hook_find_movie/static/js/354.baa84979.chunk.js",
     "static/js/468.8c8a33ee.chunk.js": "/react-hook_find_movie/static/js/468.8c8a33ee.chunk.js",
-    "static/js/180.b746a7f4.chunk.js": "/react-hook_find_movie/static/js/180.b746a7f4.chunk.js",
+    "static/js/180.9f546615.chunk.js": "/react-hook_find_movie/static/js/180.9f546615.chunk.js",
     "static/js/956.85a1fe41.chunk.js": "/react-hook_find_movie/static/js/956.85a1fe41.chunk.js",
     "static/js/597.03686402.chunk.js": "/react-hook_find_movie/static/js/597.03686402.chunk.js",
     "static/js/681.d13cc6e8.chunk.js": "/react-hook_find_movie/static/js/681.d13cc6e8.chunk.js",
@@ -13,10 +13,10 @@
     "static/media/pict.png": "/react-hook_find_movie/static/media/pict.b9e58b09a02ab88b76fa.png",
     "index.html": "/react-hook_find_movie/index.html",
     "main.c91dde9d.css.map": "/react-hook_find_movie/static/css/main.c91dde9d.css.map",
-    "main.d5352647.js.map": "/react-hook_find_movie/static/js/main.d5352647.js.map",
+    "main.cdfb5b69.js.map": "/react-hook_find_movie/static/js/main.cdfb5b69.js.map",
     "354.baa84979.chunk.js.map": "/react-hook_find_movie/static/js/354.baa84979.chunk.js.map",
     "468.8c8a33ee.chunk.js.map": "/react-hook_find_movie/static/js/468.8c8a33ee.chunk.js.map",
-    "180.b746a7f4.chunk.js.map": "/react-hook_find_movie/static/js/180.b746a7f4.chunk.js.map",
+    "180.9f546615.chunk.js.map": "/react-hook_find_movie/static/js/180.9f546615.chunk.js.map",
     "956.85a1fe41.chunk.js.map": "/react-hook_find_movie/static/js/956.85a1fe41.chunk.js.map",
     "597.03686402.chunk.js.map": "/react-hook_find_movie/static/js/597.03686402.chunk.js.map",
     "681.d13cc6e8.chunk.js.map": "/react-hook_find_movie/static/js/681.d13cc6e8.chunk.js.map",
@@ -25,6 +25,6 @@
   },
   "entrypoints": [
     "static/css/main.c91dde9d.css",
-    "static/js/main.d5352647.js"
+    "static/js/main.cdfb5b69.js"
   ]
 }
