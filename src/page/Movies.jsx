@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 import { getByQuery } from '../servises.api';
 import { useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import { Input, Button, Form } from 'components/styled.module';
 import FormMovies from 'components/Form';
 import MovieList from 'components/MovieList';
 const Movies = () => {
@@ -12,22 +10,11 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const nameQuery = searchParams.get('name') ?? '';
   const location = useLocation();
-  // console.log(location);
-  // const updateQueryString = e => {
-  //   const nextParams = e.target.value !== '' ? { name: e.target.value } : {};
-  //   setSearchParams(nextParams);
-  // };
 
   const searchQuery = queryWord => {
     console.log(queryWord);
     setSearchParams(queryWord !== '' ? { name: queryWord } : {});
   };
-  console.log(searchParams);
-  // const onSubmitInput = e => {
-  //   e.preventDefault();
-  //   setSearchParams(searchQuery);
-  // };
-
   useEffect(() => {
     if (!nameQuery) {
       return;
@@ -48,10 +35,6 @@ const Movies = () => {
   return (
     <>
       <FormMovies searchQuery={searchQuery} nameQuery={nameQuery} />
-      {/* <Form onSubmit={onSubmitInput}>
-        <Input type="text" value={searchQuery} onChange={updateQueryString} />
-        <Button type="submit">Search</Button>
-      </Form> */}
       <MovieList movies={movies} location={location} />
     </>
   );

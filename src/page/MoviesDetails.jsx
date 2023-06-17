@@ -5,7 +5,6 @@ import pict from '../components/picture/pict.png';
 
 const MoviesDetails = () => {
   const [movies, setMovies] = useState(null);
-
   const location = useLocation();
   const { id } = useParams();
   useEffect(() => {
@@ -24,15 +23,6 @@ const MoviesDetails = () => {
           <button>Go back</button>
         </Link>
         <div>
-          {/* {poster_path === null ? (
-            <img src={pict} alt={original_title} width="240" />
-          ) : (
-            <img
-              src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-              alt={original_title}
-              width="240"
-            />
-          )} */}
           <img
             src={
               poster_path === null

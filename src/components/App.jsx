@@ -1,10 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-// import Home from '../page/Home';
-// import Movies from '../page/Movies';
-// import Navigation from './Navigate';
-// import MoviesDetails from 'page/MoviesDetails';
-// import Cast from './Cast';
-// import Reviews from './Reviews';
 import { NotFound } from './NotFound';
 import { lazy } from 'react';
 import { Suspense } from 'react';

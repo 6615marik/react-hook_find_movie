@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-
 import { getReviews } from '../servises.api';
-
 import { useParams } from 'react-router-dom';
 const Reviews = () => {
   const [revie, setRevie] = useState([]);

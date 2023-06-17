@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import pic from './picture/pict.png';
 import { getCasts } from '../servises.api';
-
 import { useParams } from 'react-router-dom';
 
 const Cast = () => {
