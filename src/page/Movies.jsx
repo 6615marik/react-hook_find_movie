@@ -47,7 +47,7 @@ const Movies = () => {
 
   return (
     <>
-      <FormMovies searchQuery={searchQuery} />
+      <FormMovies searchQuery={searchQuery} nameQuery={nameQuery} />
       {/* <Form onSubmit={onSubmitInput}>
         <Input type="text" value={searchQuery} onChange={updateQueryString} />
         <Button type="submit">Search</Button>

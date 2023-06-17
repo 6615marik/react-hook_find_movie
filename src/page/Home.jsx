@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-// import Notiflix from 'notiflix';
-// import TreadingList from 'components/TreadingList';
 import { getMovies } from '../servises.api';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import MovieList from 'components/MovieList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
   useEffect(() => {
     getMovies()
       .then(setMovies)
@@ -21,7 +19,7 @@ const Home = () => {
   return (
     <>
       <h2>Trending today</h2>
-      <MovieList movies={movies} location={location} />
+      <MovieList movies={movies} />
     </>
   );
 };

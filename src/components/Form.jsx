@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Button, Input, Form } from './styled.module';
 
 const FormMovies = props => {
-  //   console.log(searchQuery);
-  const [word, setWord] = useState('');
+  const [word, setWord] = useState(props.nameQuery);
   const searchQuery = e => {
     setWord(e.target.value);
   };

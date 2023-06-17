@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { LInk } from './styled.module';
-const MovieList = ({ movies, location }) => {
+import { useLocation } from 'react-router-dom';
+
+const MovieList = ({ movies }) => {
+  const location = useLocation();
   return (
     <ul>
       {movies.map(movie => (
